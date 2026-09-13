@@ -15,7 +15,7 @@ permissions:
 env:
   REVIEW_FILE: ".github/steps/x-review.md"
 
-jobs:
+jobs:    
   find_exercise:
     name: Find Exercise Issue
     uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.6.0
@@ -28,6 +28,9 @@ jobs:
       ISSUE_URL: ${{ needs.find_exercise.outputs.issue-url }}
 
     steps:
+      - name: Show event trigger
+        run: echo "Triggered by ${{ github.event_name }}"
+        
       - name: Checkout
         uses: actions/checkout@v4
 
