@@ -9,6 +9,9 @@ jobs:
     name: Post welcome comment
     runs-on: ubuntu-latest
     steps:
+      - name: Show event trigger
+        run: echo "Triggered by ${{ github.event_name }}"
+        
       - run: gh pr comment "$PR_URL" --body "Welcome to the repository!"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
